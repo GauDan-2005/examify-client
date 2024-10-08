@@ -1,0 +1,14 @@
+.timer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .time {
+    align-self: stretch;
+    text-align: center;
+    font-size: 1.1rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 1.5rem;
+  }
+}
