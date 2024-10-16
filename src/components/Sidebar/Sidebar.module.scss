@@ -1,0 +1,95 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  align-self: stretch;
+  gap: 1.6rem;
+  flex: 0.2 0 0;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  background-color: #2b223e;
+
+  .logo_wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    padding: 0.5rem;
+    border: 0.5px solid #7a68ff;
+    border-radius: 0.5rem;
+
+    // &:hover {
+    //   background-color: rgb(255, 255, 255, 0.025);
+    // }
+
+    .logo {
+      height: 2.5rem;
+    }
+  }
+
+  .routes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    justify-self: flex-start;
+    margin-bottom: auto;
+
+    .route {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: stretch;
+      padding: 0.4rem;
+      border-radius: 0.5rem;
+      border: 0.5px solid #7a68ff;
+      font-weight: 400;
+      cursor: pointer;
+      color: #fcfcfc;
+
+      &:hover {
+        background-color: rgb(122, 104, 255, 0.3);
+        border-color: #6254ce;
+      }
+
+      .route_title {
+        align-self: center;
+        text-align: center;
+        font-size: 1rem;
+        font-style: normal;
+        line-height: 1.5;
+        text-transform: capitalize;
+      }
+    }
+
+    .active {
+      background-color: #7a68ff;
+      color: #2b223e;
+      font-weight: 600;
+
+      &:hover {
+        background-color: #6254ce;
+      }
+    }
+  }
+
+  .logout_wrapper {
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    align-self: stretch;
+
+    .logout_btn {
+      align-self: stretch;
+      flex: 1 0 0;
+      background-color: #d44d4d;
+
+      &:hover {
+        background-color: #ab3b3b;
+      }
+    }
+  }
+}

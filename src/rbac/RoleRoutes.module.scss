@@ -1,0 +1,21 @@
+.main {
+  display: flex;
+  gap: 0.5rem;
+  align-self: stretch;
+  flex: 1 0 0;
+  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-self: stretch;
+    flex: 1 0 0;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+}

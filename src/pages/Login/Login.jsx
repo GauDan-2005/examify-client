@@ -1,7 +1,16 @@
 import { useState } from "react";
-import axios from "axios";
-import styles from "./Login.module.scss";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
+
+import useAuth from "../../api/useAuth";
+
+import { setUser } from "../../store/reducers/userSlice";
+
 import Button from "../../components/Button/Button";
+
+import styles from "./Login.module.scss";
+import "react-toastify/dist/ReactToastify.css";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [userData, setUserData] = useState({
@@ -9,6 +18,10 @@ const Login = () => {
     password: "",
   });
   const [activeInput, setActiveInput] = useState(null);
+
+  const { loginUser, loading } = useAuth();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -18,13 +31,24 @@ const Login = () => {
     }));
   };
 
-  const onSubmit = () => {
-    try {
-      const res = axios.post("/api/auth/login", userData);
-      console.log(res);
-    } catch (err) {
-      console.log(err.message);
+  const onSubmit = async () => {
+    if (!userData.email || !userData.password) {
+      toast.error("Please fill all the fields");
+      return;
     }
+
+    loginUser(userData, (response, error) => {
+      if (error) {
+        toast.error(error.response.data.msg);
+        return;
+      }
+
+      if (response?.data?.token) {
+        dispatch(setUser(response?.data));
+        toast.success("Login successful");
+        navigate("/user/dashboard");
+      }
+    });
   };
 
   return (
@@ -69,7 +93,7 @@ const Login = () => {
         </div>
         <div className={styles.action_wrapper}>
           <Button
-            title={"Login"}
+            title={loading ? "Loading" : "Login"}
             onClick={onSubmit}
             className={styles.login_btn}
           />
